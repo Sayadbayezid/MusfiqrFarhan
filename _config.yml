@@ -1,0 +1,70 @@
+# Musfiq R. Farhan - Professional Portfolio
+# Jekyll Configuration for GitHub Pages
+
+title: Musfiq R. Farhan
+tagline: Multi-Talented Entertainer | RJ | Actor | Content Creator
+description: >
+  Professional portfolio and blog of Musfiq R. Farhan, showcasing his journey
+  across radio, television, and digital media.
+
+url: https://musfiqrfarhan.blog
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+theme: null
+
+# GitHub Pages settings
+repository: Sayadbayezid/MusfiqrFarhan
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:slug/
+  projects:
+    output: true
+    permalink: /projects/:slug/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /blog/:year/:month/:day/:slug/
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from processing
+exclude:
+  - .github
+  - .gitignore
+  - admin
+  - node_modules
+  - vendor
+
+# SEO settings
+social:
+  name: Musfiq R. Farhan
+  links:
+    - https://facebook.com
+    - https://instagram.com
+    - https://twitter.com
+    - https://youtube.com
+
+# Analytics
+google_analytics: ""
+
+# Permalink structure
+permalink: /blog/:year/:month/:day/:slug/
