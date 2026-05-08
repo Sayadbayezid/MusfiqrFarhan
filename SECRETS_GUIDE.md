@@ -76,17 +76,16 @@ VITE_WHATSAPP_URL=https://whatsapp.com/channel/0029VbBdG03HQbS1bTrVHF1X
 ## 🔑 Admin Password
 
 ### Current Password
-- **Password:** `SmbSmb64`
-- **Location:** `client/src/contexts/AuthContext.tsx`
+- **Password:** Stored in environment variable `VITE_ADMIN_PASSWORD`
+- **Location:** `client/src/contexts/AuthContext.tsx` (uses env variable)
+- **Never:** Hardcode passwords in public repository
 
 ### Change Password
-1. Open `client/src/contexts/AuthContext.tsx`
-2. Find `ADMIN_PASSWORD` constant
-3. Update value:
-   ```typescript
-   const ADMIN_PASSWORD = 'your-new-password';
-   ```
-4. Commit and push changes
+1. Create `.env` file locally (never commit)
+2. Add: `VITE_ADMIN_PASSWORD=your-new-password`
+3. Restart dev server
+4. For production: Use GitHub Secrets or environment variables
+5. **Never** commit password to repository
 
 ### Security Notes
 - ⚠️ Password is hardcoded in frontend (visible in browser)
@@ -98,18 +97,14 @@ VITE_WHATSAPP_URL=https://whatsapp.com/channel/0029VbBdG03HQbS1bTrVHF1X
 ## 🔑 Google Tag Manager
 
 ### Current ID
-- **GTM ID:** `GTM-WJKZBG9Z`
+- **GTM ID:** Stored in environment variable `VITE_GTM_ID`
 - **Status:** Active and tracking
 
 ### Update GTM ID
-1. Open `client/index.html`
-2. Find Google Tag Manager script
-3. Replace ID in:
-   ```html
-   <script>
-   })(window,document,'script','dataLayer','GTM-WJKZBG9Z');
-   </script>
-   ```
+1. Create `.env` file locally
+2. Add: `VITE_GTM_ID=GTM-XXXXXXXXX`
+3. Restart dev server
+4. **Never** hardcode GTM ID in public repository
 
 ---
 

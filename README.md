@@ -17,7 +17,7 @@ A modern, professional blog and portfolio website for **Musfiq R. Farhan**, a mu
 - **📱 Responsive Design** - Mobile-first, fully responsive on all devices
 
 ### 🔐 Admin Dashboard
-- **Secure Login** - Password-protected admin area (Password: `SmbSmb64`)
+- **Secure Login** - Password-protected admin area (password set via environment variables)
 - **✍️ Blog Management** - Create, edit, delete, and publish blog posts
 - **📌 Publish Control** - Toggle between draft and published status
 - **🌟 Featured Posts** - Mark posts as featured for homepage display
@@ -28,7 +28,7 @@ A modern, professional blog and portfolio website for **Musfiq R. Farhan**, a mu
 - **React 19** - Latest React with modern hooks and patterns
 - **Tailwind CSS 4** - Utility-first CSS framework with OKLCH colors
 - **🔍 SEO Optimized** - Person schema, meta tags, Open Graph, Twitter Cards
-- **📊 Google Tag Manager** - Analytics tracking (GTM-WJKZBG9Z)
+- **📊 Google Tag Manager** - Analytics tracking (configured via environment variables)
 - **💾 LocalStorage** - Automatic data persistence in browser
 - **🎯 TypeScript** - Full type safety throughout the application
 - **♿ Accessible** - WCAG compliant with proper ARIA labels
@@ -156,8 +156,10 @@ MusfiqrFarhan/
 ### Accessing Admin Area
 
 1. Navigate to `/admin` or click "Admin" in navigation
-2. Enter password: `SmbSmb64`
+2. Enter your admin password (set via environment variables)
 3. Click "Login"
+
+**Note:** Admin password is configured in `.env` file and never exposed in public repository
 
 ### Managing Blog Posts
 
@@ -358,9 +360,10 @@ export const SOCIAL_LINKS = {
 ## 🔒 Security
 
 ### Admin Password
-- Current password: `SmbSmb64`
-- Change in `client/src/contexts/AuthContext.tsx` if needed
-- Password is hardcoded (for static site)
+- Password stored in environment variable `VITE_ADMIN_PASSWORD`
+- Never hardcoded in public repository
+- Set locally in `.env` file (never committed)
+- Change by updating `.env` file locally
 
 ### Data Privacy
 - No data sent to external servers (except images)
@@ -462,7 +465,7 @@ MIT License - See LICENSE file for details
 
 ### Admin Login
 - **URL:** `/admin`
-- **Password:** `SmbSmb64`
+- **Password:** Set via `VITE_ADMIN_PASSWORD` environment variable (see SECRETS_GUIDE.md)
 
 ### Public Pages
 - **Home:** `/`
