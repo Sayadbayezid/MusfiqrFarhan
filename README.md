@@ -296,7 +296,7 @@ export const SOCIAL_LINKS = {
 ## 📊 Analytics
 
 ### Google Tag Manager
-- **ID:** GTM-WJKZBG9Z
+- **ID:** Configured via `VITE_GTM_ID` environment variable
 - **Status:** ✅ Active
 - **Tracking:** Page views, user interactions, events
 

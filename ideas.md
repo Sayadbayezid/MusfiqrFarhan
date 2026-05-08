@@ -63,6 +63,6 @@ This design will be implemented using React + Tailwind CSS with shadcn/ui compon
 - Dynamic blog listing with filtering
 - Portfolio/works showcase
 - Smooth navigation
-- Admin dashboard with password protection (SmbSmb64)
+- Admin dashboard with password protection (environment variable)
 - Blog post management (create, edit, delete)
 - Responsive design for mobile, tablet, desktop
