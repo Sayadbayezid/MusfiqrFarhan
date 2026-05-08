@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Musfiq Blog</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <nav>
+                <a href="/">Home</a>
+                <a href="#" id="logoutBtn" class="logout">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container dashboard">
+        <div class="dashboard-content">
+            <!-- Left: Post List -->
+            <aside class="post-list-sidebar">
+                <h2>Posts</h2>
+                <button id="newPostBtn" class="btn btn-primary">+ New Post</button>
+                <div id="postsList" class="posts-list">
+                    <!-- Posts will be listed here -->
+                </div>
+            </aside>
+
+            <!-- Right: Post Editor -->
+            <section class="post-editor">
+                <div id="editorContainer">
+                    <p class="placeholder">Select a post to edit or create a new one</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="admin.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
