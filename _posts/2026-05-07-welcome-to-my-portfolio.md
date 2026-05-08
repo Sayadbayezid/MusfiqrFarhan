@@ -1,4 +1,3 @@
----
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +12,10 @@
 </body>
 </html>
 ---
-
+---
+layout: default
+title: Welcome to My Portfolio
+---
 # Welcome to My Professional Portfolio
 
 I'm thrilled to launch this platform where I can share my journey, insights, and stories from my multi-talented career across radio, television, and digital media.
