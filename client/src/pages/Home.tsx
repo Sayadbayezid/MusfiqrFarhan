@@ -105,6 +105,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Instagram Gallery */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <h2 className="text-4xl font-bold mb-12">From My Instagram</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <img
+                src="/manus-storage/musfiq_image_1_892e2248.jpg"
+                alt="Musfiq R. Farhan - Entertainment personality and content creator from Bangladesh"
+                className="w-full h-80 object-cover"
+              />
+            </div>
+            <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <img
+                src="/manus-storage/musfiq_image_2_7cf91d7c.jpg"
+                alt="Musfiq R. Farhan - Radio jockey, actor, and digital media personality"
+                className="w-full h-80 object-cover"
+              />
+            </div>
+          </div>
+          <a
+            href={SOCIAL_LINKS.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-secondary font-semibold hover:text-secondary/80 transition-colors mb-16"
+          >
+            Follow on Instagram
+            <ArrowRight size={18} />
+          </a>
+        </div>
+      </section>
+
       {/* Featured Blog Posts */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">

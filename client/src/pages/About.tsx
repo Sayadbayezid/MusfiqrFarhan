@@ -17,10 +17,15 @@ export default function About() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Left: Image */}
           <div className="md:col-span-1">
-            <div className="sticky top-24">
+            <div className="sticky top-24 space-y-4">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop"
-                alt="Musfiq R. Farhan"
+                src="/manus-storage/musfiq_image_1_892e2248.jpg"
+                alt="Musfiq R. Farhan - Professional portrait of entertainment personality"
+                className="rounded-xl shadow-lg w-full"
+              />
+              <img
+                src="/manus-storage/musfiq_image_2_7cf91d7c.jpg"
+                alt="Musfiq R. Farhan - Radio jockey and content creator from Bangladesh"
                 className="rounded-xl shadow-lg w-full"
               />
             </div>

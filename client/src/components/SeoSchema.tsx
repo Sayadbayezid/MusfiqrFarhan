@@ -10,9 +10,14 @@ export const PERSON_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Musfiq R. Farhan',
-  description: 'Multi-talented entertainer, RJ, actor, and content creator',
+  alternateName: ['Musfiq Farhan', 'MRF'],
+  description: 'Multi-talented entertainer, RJ, actor, and content creator from Bangladesh',
   url: 'https://musfiqrfarhan.blog',
-  image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop',
+  image: [
+    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop',
+    '/manus-storage/musfiq_image_1_892e2248.jpg',
+    '/manus-storage/musfiq_image_2_7cf91d7c.jpg',
+  ],
   sameAs: [
     SOCIAL_LINKS.instagram,
     SOCIAL_LINKS.facebook,
@@ -20,7 +25,7 @@ export const PERSON_SCHEMA = {
     SOCIAL_LINKS.youtube,
     SOCIAL_LINKS.whatsapp,
   ],
-  jobTitle: ['Radio Jockey', 'Actor', 'Content Creator'],
+  jobTitle: ['Radio Jockey', 'Actor', 'Content Creator', 'Digital Media Personality'],
   knowsAbout: [
     'Radio Broadcasting',
     'Television Acting',
@@ -28,10 +33,25 @@ export const PERSON_SCHEMA = {
     'Storytelling',
     'Entertainment',
     'Media Production',
+    'Social Media Marketing',
+    'Audience Engagement',
   ],
   worksFor: {
     '@type': 'Organization',
     name: 'Entertainment Industry',
+  },
+  birthPlace: {
+    '@type': 'Place',
+    name: 'Bangladesh',
+  },
+  nationality: {
+    '@type': 'Country',
+    name: 'Bangladesh',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'General Inquiry',
+    email: 'contact@musfiqrfarhan.blog',
   },
 };
 
