@@ -1,10 +1,17 @@
 ---
-layout: post
-title: "Welcome to My Professional Portfolio"
-date: 2026-05-07
-image: "/assets/images/blog1.jpg"
-category: "Personal"
-tags: ["welcome", "portfolio", "introduction"]
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ page.title }}</title>
+</head>
+<body>
+    <article>
+        <h1>{{ page.title }}</h1>
+        <span>Posted on {{ page.date | date: "%b %-d, %Y" }}</span>
+        <div>{{ content }}</div>
+    </article>
+</body>
+</html>
 ---
 
 # Welcome to My Professional Portfolio
