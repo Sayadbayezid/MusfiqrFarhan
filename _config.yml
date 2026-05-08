@@ -45,7 +45,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-
+  - jekyll-coffeescript
 # Exclude from processing
 exclude:
   - .github
