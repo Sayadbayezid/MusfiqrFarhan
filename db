@@ -1,0 +1,206 @@
+import { eq } from "drizzle-orm";
+import { drizzle } from "drizzle-orm/mysql2";
+import { InsertUser, users, blogPosts, InsertBlogPost, BlogPost, newsLinks, InsertNewsLink, NewsLink } from "../drizzle/schema";
+import { ENV } from './_core/env';
+
+let _db: ReturnType<typeof drizzle> | null = null;
+
+// Lazily create the drizzle instance so local tooling can run without a DB.
+export async function getDb() {
+  if (!_db && process.env.DATABASE_URL) {
+    try {
+      _db = drizzle(process.env.DATABASE_URL);
+    } catch (error) {
+      console.warn("[Database] Failed to connect:", error);
+      _db = null;
+    }
+  }
+  return _db;
+}
+
+export async function upsertUser(user: InsertUser): Promise<void> {
+  if (!user.openId) {
+    throw new Error("User openId is required for upsert");
+  }
+
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot upsert user: database not available");
+    return;
+  }
+
+  try {
+    const values: InsertUser = {
+      openId: user.openId,
+    };
+    const updateSet: Record<string, unknown> = {};
+
+    const textFields = ["name", "email", "loginMethod"] as const;
+    type TextField = (typeof textFields)[number];
+
+    const assignNullable = (field: TextField) => {
+      const value = user[field];
+      if (value === undefined) return;
+      const normalized = value ?? null;
+      values[field] = normalized;
+      updateSet[field] = normalized;
+    };
+
+    textFields.forEach(assignNullable);
+
+    if (user.lastSignedIn !== undefined) {
+      values.lastSignedIn = user.lastSignedIn;
+      updateSet.lastSignedIn = user.lastSignedIn;
+    }
+    if (user.role !== undefined) {
+      values.role = user.role;
+      updateSet.role = user.role;
+    } else if (user.openId === ENV.ownerOpenId) {
+      values.role = 'admin';
+      updateSet.role = 'admin';
+    }
+
+    if (!values.lastSignedIn) {
+      values.lastSignedIn = new Date();
+    }
+
+    if (Object.keys(updateSet).length === 0) {
+      updateSet.lastSignedIn = new Date();
+    }
+
+    await db.insert(users).values(values).onDuplicateKeyUpdate({
+      set: updateSet,
+    });
+  } catch (error) {
+    console.error("[Database] Failed to upsert user:", error);
+    throw error;
+  }
+}
+
+export async function getUserByOpenId(openId: string) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot get user: database not available");
+    return undefined;
+  }
+
+  const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
+
+  return result.length > 0 ? result[0] : undefined;
+}
+
+// Blog Posts Queries
+export async function getAllBlogPosts() {
+  const db = await getDb();
+  if (!db) return [];
+  try {
+    return await db.select().from(blogPosts).orderBy(blogPosts.date);
+  } catch (error) {
+    console.error("[Database] Failed to get blog posts:", error);
+    return [];
+  }
+}
+
+export async function getBlogPostById(id: string): Promise<BlogPost | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  try {
+    const result = await db.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
+    return result.length > 0 ? result[0] : undefined;
+  } catch (error) {
+    console.error("[Database] Failed to get blog post:", error);
+    return undefined;
+  }
+}
+
+export async function createBlogPost(post: InsertBlogPost) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  try {
+    await db.insert(blogPosts).values(post);
+    return post;
+  } catch (error) {
+    console.error("[Database] Failed to create blog post:", error);
+    throw error;
+  }
+}
+
+export async function updateBlogPost(id: string, post: Partial<InsertBlogPost>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  try {
+    await db.update(blogPosts).set(post).where(eq(blogPosts.id, id));
+  } catch (error) {
+    console.error("[Database] Failed to update blog post:", error);
+    throw error;
+  }
+}
+
+export async function deleteBlogPost(id: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  try {
+    await db.delete(blogPosts).where(eq(blogPosts.id, id));
+  } catch (error) {
+    console.error("[Database] Failed to delete blog post:", error);
+    throw error;
+  }
+}
+
+// News Links Queries
+export async function getAllNewsLinks() {
+  const db = await getDb();
+  if (!db) return [];
+  try {
+    return await db.select().from(newsLinks).orderBy(newsLinks.date);
+  } catch (error) {
+    console.error("[Database] Failed to get news links:", error);
+    return [];
+  }
+}
+
+export async function getNewsLinkById(id: string): Promise<NewsLink | undefined> {
+  const db = await getDb();
+  if (!db) return undefined;
+  try {
+    const result = await db.select().from(newsLinks).where(eq(newsLinks.id, id)).limit(1);
+    return result.length > 0 ? result[0] : undefined;
+  } catch (error) {
+    console.error("[Database] Failed to get news link:", error);
+    return undefined;
+  }
+}
+
+export async function createNewsLink(link: InsertNewsLink) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  try {
+    await db.insert(newsLinks).values(link);
+    return link;
+  } catch (error) {
+    console.error("[Database] Failed to create news link:", error);
+    throw error;
+  }
+}
+
+export async function updateNewsLink(id: string, link: Partial<InsertNewsLink>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  try {
+    await db.update(newsLinks).set(link).where(eq(newsLinks.id, id));
+  } catch (error) {
+    console.error("[Database] Failed to update news link:", error);
+    throw error;
+  }
+}
+
+export async function deleteNewsLink(id: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  try {
+    await db.delete(newsLinks).where(eq(newsLinks.id, id));
+  } catch (error) {
+    console.error("[Database] Failed to delete news link:", error);
+    throw error;
+  }
+}
