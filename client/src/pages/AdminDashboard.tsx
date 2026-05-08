@@ -21,6 +21,7 @@ export default function AdminDashboard() {
     tags: [],
     date: new Date().toISOString().split('T')[0],
     featured: false,
+    published: false,
   });
 
   const handleLogout = () => {
@@ -40,6 +41,7 @@ export default function AdminDashboard() {
       tags: [],
       date: new Date().toISOString().split('T')[0],
       featured: false,
+      published: false,
     });
     setShowForm(true);
   };
@@ -223,6 +225,20 @@ export default function AdminDashboard() {
                 </label>
               </div>
 
+              {/* Published */}
+              <div className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="published"
+                  checked={formData.published}
+                  onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
+                  className="w-4 h-4 rounded border-border cursor-pointer"
+                />
+                <label htmlFor="published" className="cursor-pointer font-medium">
+                  Publish post (make it public)
+                </label>
+              </div>
+
               {/* Actions */}
               <div className="flex gap-4 pt-4">
                 <button
@@ -251,7 +267,7 @@ export default function AdminDashboard() {
                   <th className="px-6 py-4 text-left text-sm font-semibold">Title</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold">Category</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold">Date</th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold">Featured</th>
+                  <th className="px-6 py-4 text-left text-sm font-semibold">Status</th>
                   <th className="px-6 py-4 text-left text-sm font-semibold">Actions</th>
                 </tr>
               </thead>
@@ -263,11 +279,20 @@ export default function AdminDashboard() {
                       <td className="px-6 py-4 text-sm">{post.category}</td>
                       <td className="px-6 py-4 text-sm text-muted-foreground">{post.date}</td>
                       <td className="px-6 py-4 text-sm">
-                        {post.featured ? (
-                          <Eye size={18} className="text-secondary" />
-                        ) : (
-                          <EyeOff size={18} className="text-muted-foreground" />
-                        )}
+                        <div className="flex items-center gap-2">
+                          <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                            post.published
+                              ? 'bg-secondary/10 text-secondary'
+                              : 'bg-muted text-muted-foreground'
+                          }`}>
+                            {post.published ? 'Published' : 'Draft'}
+                          </span>
+                          {post.featured && (
+                            <span className="px-2 py-1 rounded text-xs font-semibold bg-primary/10 text-primary">
+                              Featured
+                            </span>
+                          )}
+                        </div>
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex gap-2">
@@ -277,6 +302,20 @@ export default function AdminDashboard() {
                           >
                             <Edit2 size={16} />
                             Edit
+                          </button>
+                          <button
+                            onClick={() => {
+                              const updated = { ...post, published: !post.published };
+                              updatePost(post.id, updated);
+                            }}
+                            className={`inline-flex items-center gap-1 px-3 py-1 text-sm rounded transition-colors ${
+                              post.published
+                                ? 'bg-secondary/10 text-secondary hover:bg-secondary/20'
+                                : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                            }`}
+                          >
+                            {post.published ? <Eye size={16} /> : <EyeOff size={16} />}
+                            {post.published ? 'Public' : 'Draft'}
                           </button>
                           <button
                             onClick={() => handleDelete(post.id)}

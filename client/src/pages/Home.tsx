@@ -2,13 +2,16 @@ import { Link } from 'wouter';
 import { useBlog } from '@/contexts/BlogContext';
 import BlogCard from '@/components/BlogCard';
 import { ArrowRight, Radio, Film, Zap } from 'lucide-react';
+import { SeoSchema, SOCIAL_LINKS } from '@/components/SeoSchema';
 
 export default function Home() {
-  const { posts } = useBlog();
-  const featuredPosts = posts.filter(p => p.featured).slice(0, 3);
+  const { getPublishedPosts } = useBlog();
+  const publishedPosts = getPublishedPosts();
+  const featuredPosts = publishedPosts.filter(p => p.featured).slice(0, 3);
 
   return (
     <div className="min-h-screen">
+      <SeoSchema />
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container">
@@ -135,9 +138,9 @@ export default function Home() {
           <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
             Follow my journey across different media platforms and stay updated with my latest projects and insights.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
             <a
-              href="https://facebook.com"
+              href={SOCIAL_LINKS.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
@@ -145,7 +148,7 @@ export default function Home() {
               Facebook
             </a>
             <a
-              href="https://instagram.com"
+              href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
@@ -153,12 +156,20 @@ export default function Home() {
               Instagram
             </a>
             <a
-              href="https://youtube.com"
+              href={SOCIAL_LINKS.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
             >
               YouTube
+            </a>
+            <a
+              href={SOCIAL_LINKS.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            >
+              WhatsApp
             </a>
           </div>
         </div>

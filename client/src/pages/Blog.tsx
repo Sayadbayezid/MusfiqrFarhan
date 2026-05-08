@@ -6,11 +6,12 @@ import { Search } from 'lucide-react';
 const CATEGORIES = ['All', 'Radio', 'Television', 'Acting', 'Content Creation', 'Personal'];
 
 export default function Blog() {
-  const { posts } = useBlog();
+  const { getPublishedPosts } = useBlog();
+  const publishedPosts = getPublishedPosts();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredPosts = posts.filter(post => {
+  const filteredPosts = publishedPosts.filter(post => {
     const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          post.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -86,18 +87,18 @@ export default function Blog() {
         <div className="mt-16 pt-12 border-t border-border">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-secondary mb-2">{posts.length}</div>
-              <p className="text-muted-foreground">Total Posts</p>
+              <div className="text-4xl font-bold text-secondary mb-2">{publishedPosts.length}</div>
+              <p className="text-muted-foreground">Published Posts</p>
             </div>
             <div>
               <div className="text-4xl font-bold text-secondary mb-2">
-                {new Set(posts.map(p => p.category)).size}
+                {new Set(publishedPosts.map(p => p.category)).size}
               </div>
               <p className="text-muted-foreground">Categories</p>
             </div>
             <div>
               <div className="text-4xl font-bold text-secondary mb-2">
-                {new Set(posts.flatMap(p => p.tags)).size}
+                {new Set(publishedPosts.flatMap(p => p.tags)).size}
               </div>
               <p className="text-muted-foreground">Tags</p>
             </div>

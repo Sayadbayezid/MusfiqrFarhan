@@ -10,6 +10,7 @@ export interface BlogPost {
   tags: string[];
   date: string;
   featured: boolean;
+  published: boolean;
 }
 
 interface BlogContextType {
@@ -19,6 +20,7 @@ interface BlogContextType {
   deletePost: (id: string) => void;
   getPostById: (id: string) => BlogPost | undefined;
   getPostsByCategory: (category: string) => BlogPost[];
+  getPublishedPosts: () => BlogPost[];
 }
 
 const BlogContext = createContext<BlogContextType | undefined>(undefined);
@@ -39,6 +41,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
         tags: ['radio', 'digital', 'evolution', 'media'],
         date: '2026-05-07',
         featured: true,
+        published: true,
       },
       {
         id: '2',
@@ -50,6 +53,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
         tags: ['acting', 'television', 'journey', 'career'],
         date: '2026-05-05',
         featured: true,
+        published: true,
       },
       {
         id: '3',
@@ -61,6 +65,7 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
         tags: ['digital', 'community', 'content', 'engagement'],
         date: '2026-05-01',
         featured: false,
+        published: true,
       },
     ];
 
@@ -102,8 +107,12 @@ export const BlogProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return posts.filter(post => post.category === category);
   };
 
+  const getPublishedPosts = () => {
+    return posts.filter(post => post.published);
+  };
+
   return (
-    <BlogContext.Provider value={{ posts, addPost, updatePost, deletePost, getPostById, getPostsByCategory }}>
+    <BlogContext.Provider value={{ posts, addPost, updatePost, deletePost, getPostById, getPostsByCategory, getPublishedPosts }}>
       {children}
     </BlogContext.Provider>
   );

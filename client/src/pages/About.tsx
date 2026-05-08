@@ -1,4 +1,5 @@
 import { Award, Users, Zap } from 'lucide-react';
+import { SOCIAL_LINKS } from '@/components/SeoSchema';
 
 export default function About() {
   return (
@@ -96,8 +97,8 @@ export default function About() {
             <div className="inline-flex items-center justify-center w-16 h-16 bg-secondary/10 rounded-full mb-4">
               <Zap size={32} className="text-secondary" />
             </div>
-            <h3 className="text-2xl font-bold mb-2">3</h3>
-            <p className="text-muted-foreground">Major Platforms</p>
+            <h3 className="text-2xl font-bold mb-2">5+</h3>
+            <p className="text-muted-foreground">Active Platforms</p>
           </div>
         </div>
 
@@ -123,9 +124,9 @@ export default function About() {
         <div className="mt-16 bg-primary text-primary-foreground rounded-xl p-8 text-center">
           <h3 className="text-2xl font-bold mb-4">Let's Connect</h3>
           <p className="mb-6">Follow my journey and stay updated with my latest projects and insights.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
             <a
-              href="https://facebook.com"
+              href={SOCIAL_LINKS.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
@@ -133,7 +134,7 @@ export default function About() {
               Facebook
             </a>
             <a
-              href="https://instagram.com"
+              href={SOCIAL_LINKS.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
@@ -141,12 +142,28 @@ export default function About() {
               Instagram
             </a>
             <a
-              href="https://youtube.com"
+              href={SOCIAL_LINKS.youtube}
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-2 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
             >
               YouTube
+            </a>
+            <a
+              href={SOCIAL_LINKS.imdb}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            >
+              IMDb
+            </a>
+            <a
+              href={SOCIAL_LINKS.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 bg-primary-foreground text-primary rounded-lg font-semibold hover:opacity-90 transition-opacity"
+            >
+              WhatsApp
             </a>
           </div>
         </div>
