@@ -5,6 +5,8 @@ import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
 import BlogDetail from "@/pages/BlogDetail";
 import About from "@/pages/About";
+import News from "@/pages/News";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminDashboard from "@/pages/AdminDashboard";
 import Header from "@/components/Header";
@@ -13,6 +15,7 @@ import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { BlogProvider } from "./contexts/BlogContext";
+import { LinksProvider } from "./contexts/LinksContext";
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 
 // Protected route component
@@ -34,6 +37,8 @@ function Router() {
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:id"} component={BlogDetail} />
       <Route path={"/about"} component={About} />
+      <Route path={"/news"} component={News} />
+      <Route path={"/privacy"} component={PrivacyPolicy} />
       <Route path={"/admin"} component={AdminLogin} />
       <Route path={"/admin/dashboard"}>
         {() => <ProtectedRoute component={AdminDashboard} />}
@@ -51,16 +56,18 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <AuthProvider>
           <BlogProvider>
-            <TooltipProvider>
-              <Toaster />
-              <div className="flex flex-col min-h-screen">
-                <Header />
-                <main className="flex-1">
-                  <Router />
-                </main>
-                <Footer />
-              </div>
-            </TooltipProvider>
+            <LinksProvider>
+              <TooltipProvider>
+                <Toaster />
+                <div className="flex flex-col min-h-screen">
+                  <Header />
+                  <main className="flex-1">
+                    <Router />
+                  </main>
+                  <Footer />
+                </div>
+              </TooltipProvider>
+            </LinksProvider>
           </BlogProvider>
         </AuthProvider>
       </ThemeProvider>
