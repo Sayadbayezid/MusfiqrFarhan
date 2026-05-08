@@ -58,7 +58,7 @@ This document provides a comprehensive review of the Musfiq R. Farhan blog websi
 **Location:** Browser LocalStorage (`admin-auth` key)
 **Format:** String ('true' when logged in)
 **Persistence:** Survives page refresh in same browser
-**Password:** `SmbSmb64` (hardcoded in AuthContext)
+**Password:** `VITE_ADMIN_PASSWORD` environment variable (set via environment variable)
 
 **Status:** ✅ WORKING - Admin login state persists correctly
 
@@ -67,7 +67,7 @@ This document provides a comprehensive review of the Musfiq R. Farhan blog websi
 ## 2. Blog Publishing Workflow
 
 ### Publishing Flow
-1. **Admin Login** → Authenticate with password `SmbSmb64`
+1. **Admin Login** → Authenticate with password `VITE_ADMIN_PASSWORD` environment variable
 2. **Create/Edit Post** → Fill in title, description, content, category, date
 3. **Set Published Status** → Toggle "Publish post" checkbox
 4. **Save Post** → Click "Create Post" or "Update Post"
@@ -100,7 +100,7 @@ This document provides a comprehensive review of the Musfiq R. Farhan blog websi
 ## 3. News & Links Management
 
 ### Links Management Flow
-1. **Admin Login** → Authenticate with password `SmbSmb64`
+1. **Admin Login** → Authenticate with password `VITE_ADMIN_PASSWORD` environment variable
 2. **Go to Links Tab** → Click "News & Links" tab in admin dashboard
 3. **Add New Link** → Click "New Link" button
 4. **Fill Details** → Title, description, URL, category, source, date
@@ -333,7 +333,7 @@ Since data is stored in browser localStorage:
 
 ## 14. Security Checklist
 
-- ✅ **Admin Password:** Protected with password `SmbSmb64`
+- ✅ **Admin Password:** Protected with password `VITE_ADMIN_PASSWORD` environment variable
 - ✅ **Session Persistence:** Login persists in localStorage
 - ✅ **Logout:** Clears admin session
 - ✅ **Protected Routes:** Admin dashboard requires authentication

@@ -149,7 +149,7 @@ nslookup www.musfiqrfarhan.blog
 
 ### Test Admin Area
 1. Go to https://www.musfiqrfarhan.blog/admin
-2. Enter password: `SmbSmb64`
+2. Enter password: `VITE_ADMIN_PASSWORD` environment variable
 3. Should access admin dashboard
 
 ### Test Mobile
@@ -266,7 +266,7 @@ nslookup www.musfiqrfarhan.blog
 4. Monitor traffic and behavior
 
 #### Google Tag Manager
-- [x] GTM ID: GTM-WJKZBG9Z
+- [x] GTM ID: `VITE_GTM_ID` environment variable
 - [x] Already configured
 - [x] Tracking page views
 

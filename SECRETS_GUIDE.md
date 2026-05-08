@@ -43,7 +43,7 @@ This guide explains how to manage sensitive data and environment variables for t
 
 ```env
 # Google Tag Manager
-VITE_GTM_ID=GTM-WJKZBG9Z
+VITE_GTM_ID=your-gtm-id-here
 
 # Analytics
 VITE_ANALYTICS_ENDPOINT=https://analytics.example.com
@@ -55,7 +55,7 @@ VITE_APP_TITLE=Musfiq R. Farhan - Blog & Portfolio
 VITE_APP_LOGO=https://i.postimg.cc/c1K0NDHT/IMG-2742.jpg
 
 # Admin Configuration
-ADMIN_PASSWORD=SmbSmb64
+VITE_ADMIN_PASSWORD=your-secure-password-here
 
 # Google AdSense (Add when approved)
 VITE_ADSENSE_CLIENT_ID=ca-pub-xxxxxxxxxxxxxxxx

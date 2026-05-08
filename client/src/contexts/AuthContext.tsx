@@ -8,7 +8,13 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const ADMIN_PASSWORD = 'SmbSmb64';
+// Admin password from environment variable
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'admin';
+
+// Warn if using default password
+if (!import.meta.env.VITE_ADMIN_PASSWORD && typeof window !== 'undefined') {
+  console.warn('⚠️ VITE_ADMIN_PASSWORD not set. Using default password.');
+}
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
