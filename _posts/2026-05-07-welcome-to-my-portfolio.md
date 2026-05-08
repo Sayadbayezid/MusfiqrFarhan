@@ -29,6 +29,7 @@ I'm Musfiq R. Farhan, a versatile entertainer who has dedicated my career to con
 This portfolio serves as a comprehensive showcase of my work and a platform for sharing my thoughts on entertainment, media, and storytelling. You'll find:
 
 - **Portfolio Section**: A curated collection of my notable works across different media
+- File exists @ dir_s_mkdir - /github/workspace/_site/blog (Errno::EEXIST).
 - **Blog**: Insights, behind-the-scenes stories, and reflections on my career
 - **Contact Information**: Ways to connect and collaborate
 
