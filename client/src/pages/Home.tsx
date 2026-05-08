@@ -55,8 +55,8 @@ export default function Home() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-primary/20 rounded-2xl blur-3xl" />
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop"
-                alt="Musfiq R. Farhan"
+                src="/manus-storage/musfiq_hero_9a89b3d6.jpg"
+                alt="Musfiq R. Farhan - Multi-talented entertainer, RJ, actor, and content creator"
                 className="relative rounded-2xl shadow-2xl object-cover w-full aspect-square"
               />
             </div>
@@ -112,14 +112,14 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img
-                src="/manus-storage/musfiq_image_1_892e2248.jpg"
+                src="/manus-storage/musfiq_gallery_1_e8cc759c.jpg"
                 alt="Musfiq R. Farhan - Entertainment personality and content creator from Bangladesh"
                 className="w-full h-80 object-cover"
               />
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
               <img
-                src="/manus-storage/musfiq_image_2_7cf91d7c.jpg"
+                src="/manus-storage/musfiq_gallery_2_cb19e976.jpg"
                 alt="Musfiq R. Farhan - Radio jockey, actor, and digital media personality"
                 className="w-full h-80 object-cover"
               />

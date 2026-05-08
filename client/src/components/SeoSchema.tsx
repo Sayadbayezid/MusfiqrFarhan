@@ -14,9 +14,9 @@ export const PERSON_SCHEMA = {
   description: 'Multi-talented entertainer, RJ, actor, and content creator from Bangladesh',
   url: 'https://musfiqrfarhan.blog',
   image: [
-    'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop',
-    '/manus-storage/musfiq_image_1_892e2248.jpg',
-    '/manus-storage/musfiq_image_2_7cf91d7c.jpg',
+    '/manus-storage/musfiq_hero_9a89b3d6.jpg',
+    '/manus-storage/musfiq_gallery_1_e8cc759c.jpg',
+    '/manus-storage/musfiq_gallery_2_cb19e976.jpg',
   ],
   sameAs: [
     SOCIAL_LINKS.instagram,

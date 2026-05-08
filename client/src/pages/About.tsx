@@ -19,12 +19,12 @@ export default function About() {
           <div className="md:col-span-1">
             <div className="sticky top-24 space-y-4">
               <img
-                src="/manus-storage/musfiq_image_1_892e2248.jpg"
+                src="/manus-storage/musfiq_gallery_1_e8cc759c.jpg"
                 alt="Musfiq R. Farhan - Professional portrait of entertainment personality"
                 className="rounded-xl shadow-lg w-full"
               />
               <img
-                src="/manus-storage/musfiq_image_2_7cf91d7c.jpg"
+                src="/manus-storage/musfiq_gallery_2_cb19e976.jpg"
                 alt="Musfiq R. Farhan - Radio jockey and content creator from Bangladesh"
                 className="rounded-xl shadow-lg w-full"
               />
