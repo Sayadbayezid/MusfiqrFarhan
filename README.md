@@ -15,8 +15,8 @@ A simple, clean blog platform with admin dashboard for managing blog posts.
 
 ### 1. Access the Website
 
-- **Public Blog**: `https://sayadbayezid.github.io/MusfiqrFarhan/`
-- **Admin Login**: `https://sayadbayezid.github.io/MusfiqrFarhan/admin.html`
+- **Public Blog**: [https://www.musfiqrfarhan.blog](https://www.musfiqrfarhan.blog)
+- **Admin Login**: [https://www.musfiqrfarhan.blog/admin.html](https://www.musfiqrfarhan.blog/admin.html)
 
 ### 2. Admin Credentials
 
@@ -47,7 +47,7 @@ A simple, clean blog platform with admin dashboard for managing blog posts.
 ## File Structure
 
 ```
-docs/
+.
 ├── index.html          # Main blog page
 ├── admin.html          # Admin login page
 ├── dashboard.html      # Admin dashboard
@@ -55,6 +55,7 @@ docs/
 ├── admin.js            # Authentication logic
 ├── blog.js             # Blog display logic
 ├── dashboard.js        # Dashboard functionality
+├── CNAME               # Custom domain configuration
 └── .nojekyll           # Disable Jekyll processing
 ```
 
@@ -69,7 +70,7 @@ All blog posts are stored in browser's **localStorage**:
 
 ### Change Admin Credentials
 
-Edit `docs/admin.js`:
+Edit `admin.js`:
 ```javascript
 const ADMIN_USERNAME = 'admin';
 const ADMIN_PASSWORD = 'password123';
@@ -77,14 +78,14 @@ const ADMIN_PASSWORD = 'password123';
 
 ### Change Colors
 
-Edit `docs/style.css` - Look for color values like:
+Edit `style.css` - Look for color values like:
 ```css
 background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
 ```
 
 ### Add More Categories
 
-Edit `docs/dashboard.js` - Find the select dropdown and add options:
+Edit `dashboard.js` - Find the select dropdown and add options:
 ```html
 <option value="New Category">New Category</option>
 ```
@@ -131,4 +132,4 @@ For issues or questions, create a GitHub issue or contact the author.
 ---
 
 **Created**: May 8, 2026
-**Version**: 1.0.0
+**Version**: 1.1.0
